@@ -77,6 +77,7 @@ private:
 class Adafruit_AHTX0 {
 public:
   Adafruit_AHTX0();
+  Adafruit_AHTX0(uint8_t i2c_a);
   ~Adafruit_AHTX0();
 
   bool begin(TwoWire *wire = &Wire, int32_t sensor_id = 0);
@@ -93,11 +94,11 @@ protected:
   uint16_t _sensorid_humidity; ///< ID number for humidity
   uint16_t _sensorid_temp;     ///< ID number for temperature
 
+  uint8_t i2c_address = AHTX0_I2CADDR_DEFAULT;  // I2C address
   Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
-
+  
   Adafruit_AHTX0_Temp *temp_sensor = NULL; ///< Temp sensor data object
-  Adafruit_AHTX0_Humidity *humidity_sensor =
-      NULL; ///< Humidity sensor data object
+  Adafruit_AHTX0_Humidity *humidity_sensor = NULL; ///< Humidity sensor data object
 
 private:
   void _fetchTempCalibrationValues(void);
