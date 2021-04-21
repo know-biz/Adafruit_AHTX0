@@ -42,6 +42,11 @@
  */
 Adafruit_AHTX0::Adafruit_AHTX0(void) {}
 
+Adafruit_AHTX0::Adafruit_AHTX0(uint8_t i2c_a) {
+  i2c_address = i2c_a;
+}
+
+
 Adafruit_AHTX0::~Adafruit_AHTX0(void) {
   if (temp_sensor) {
     delete temp_sensor;
@@ -66,7 +71,7 @@ bool Adafruit_AHTX0::begin(TwoWire *wire, int32_t sensor_id) {
     delete i2c_dev; // remove old interface
   }
 
-  i2c_dev = new Adafruit_I2CDevice(AHTX0_I2CADDR_DEFAULT, wire);
+  i2c_dev = new Adafruit_I2CDevice(i2c_address, wire);
 
   if (!i2c_dev->begin()) {
     return false;
