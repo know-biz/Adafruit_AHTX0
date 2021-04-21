@@ -2,6 +2,13 @@
 
 This is the Adafruit AHT10+AHT20 Humidity and Temperature Sensor library for Arduino
 
+
+### Alamgir modifications
+- added support for  specifying I2C address so that multiple AHT10 could be used on the same bus.
+
+
+
+
 Tested and works great with the Adafruit AHT20 Breakout Board
 [<img src="assets/board.png?raw=true" width="500px">](https://www.adafruit.com/products/)
 
