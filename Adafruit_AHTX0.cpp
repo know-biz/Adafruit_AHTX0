@@ -40,14 +40,14 @@
 /*!
  *    @brief  Instantiates a new AHTX0 class
  */
-Adafruit_AHTX0::Adafruit_AHTX0(void) {}
+Alamgir_AHTX0::Alamgir_AHTX0(void) {}
 
-Adafruit_AHTX0::Adafruit_AHTX0(uint8_t i2c_a) {
+Alamgir_AHTX0::Alamgir_AHTX0(uint8_t i2c_a) {
   i2c_address = i2c_a;
 }
 
 
-Adafruit_AHTX0::~Adafruit_AHTX0(void) {
+Alamgir_AHTX0::~Alamgir_AHTX0(void) {
   if (temp_sensor) {
     delete temp_sensor;
   }
@@ -64,7 +64,7 @@ Adafruit_AHTX0::~Adafruit_AHTX0(void) {
  *            The unique ID to differentiate the sensors from others
  *    @return True if initialization was successful, otherwise false.
  */
-bool Adafruit_AHTX0::begin(TwoWire *wire, int32_t sensor_id) {
+bool Alamgir_AHTX0::begin(TwoWire *wire, int32_t sensor_id) {
   delay(20); // 20 ms to power up
 
   if (i2c_dev) {
@@ -109,7 +109,7 @@ bool Adafruit_AHTX0::begin(TwoWire *wire, int32_t sensor_id) {
  *
  * @returns 8 bits of status data, or 0xFF if failed
  */
-uint8_t Adafruit_AHTX0::getStatus(void) {
+uint8_t Alamgir_AHTX0::getStatus(void) {
   uint8_t ret;
   if (!i2c_dev->read(&ret, 1)) {
     return 0xFF;
@@ -126,7 +126,7 @@ uint8_t Adafruit_AHTX0::getStatus(void) {
     @returns true if the event data was read successfully
 */
 /**************************************************************************/
-bool Adafruit_AHTX0::getEvent(sensors_event_t *humidity,
+bool Alamgir_AHTX0::getEvent(sensors_event_t *humidity,
                               sensors_event_t *temp) {
   uint32_t t = millis();
 
@@ -166,7 +166,7 @@ bool Adafruit_AHTX0::getEvent(sensors_event_t *humidity,
   return true;
 }
 
-void Adafruit_AHTX0::fillTempEvent(sensors_event_t *temp, uint32_t timestamp) {
+void Alamgir_AHTX0::fillTempEvent(sensors_event_t *temp, uint32_t timestamp) {
   memset(temp, 0, sizeof(sensors_event_t));
   temp->version = sizeof(sensors_event_t);
   temp->sensor_id = _sensorid_temp;
@@ -175,7 +175,7 @@ void Adafruit_AHTX0::fillTempEvent(sensors_event_t *temp, uint32_t timestamp) {
   temp->temperature = _temperature;
 }
 
-void Adafruit_AHTX0::fillHumidityEvent(sensors_event_t *humidity,
+void Alamgir_AHTX0::fillHumidityEvent(sensors_event_t *humidity,
                                        uint32_t timestamp) {
   memset(humidity, 0, sizeof(sensors_event_t));
   humidity->version = sizeof(sensors_event_t);
@@ -190,7 +190,7 @@ void Adafruit_AHTX0::fillHumidityEvent(sensors_event_t *humidity,
  *
  * @return Adafruit_Sensor*
  */
-Adafruit_Sensor *Adafruit_AHTX0::getHumiditySensor(void) {
+Adafruit_Sensor *Alamgir_AHTX0::getHumiditySensor(void) {
   return humidity_sensor;
 }
 
@@ -199,7 +199,7 @@ Adafruit_Sensor *Adafruit_AHTX0::getHumiditySensor(void) {
  *
  * @return Adafruit_Sensor*
  */
-Adafruit_Sensor *Adafruit_AHTX0::getTemperatureSensor(void) {
+Adafruit_Sensor *Alamgir_AHTX0::getTemperatureSensor(void) {
   return temp_sensor;
 }
 /**
