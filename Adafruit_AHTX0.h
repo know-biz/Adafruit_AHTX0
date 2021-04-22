@@ -31,7 +31,7 @@
 #define AHTX0_STATUS_BUSY 0x80       ///< Status bit for busy
 #define AHTX0_STATUS_CALIBRATED 0x08 ///< Status bit for calibrated
 
-class Adafruit_AHTX0;
+class Alamgir_AHTX0;
 
 /**
  * @brief  Adafruit Unified Sensor interface for the humidity sensor component
@@ -74,11 +74,11 @@ private:
  *    @brief  Class that stores state and functions for interacting with
  *            the AHT10/AHT20 I2C Temperature/Humidity sensor
  */
-class Adafruit_AHTX0 {
+class Alamgir_AHTX0 {
 public:
-  Adafruit_AHTX0();
-  Adafruit_AHTX0(uint8_t i2c_a);
-  ~Adafruit_AHTX0();
+  Alamgir_AHTX0();
+  Alamgir_AHTX0(uint8_t i2c_a);
+  ~Alamgir_AHTX0();
 
   bool begin(TwoWire *wire = &Wire, int32_t sensor_id = 0);
 
